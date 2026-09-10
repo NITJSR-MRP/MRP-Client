@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { userAtom } from "@/atoms/user";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -74,6 +75,7 @@ const Navbar: React.FC = () => {
               ))}
             </ul>
             <div className="h-6 w-px bg-zinc-200 dark:bg-zinc-800" />{" "}
+            <ThemeToggle />
             {/* Logic: If User exists, show Profile, else show Login Button */}
             {user ? (
               <div
@@ -108,7 +110,8 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
             <Button
               variant="ghost"
               size="icon"

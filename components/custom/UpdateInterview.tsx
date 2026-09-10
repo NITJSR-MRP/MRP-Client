@@ -236,7 +236,7 @@ export default function UpdateInterviewForm({
 
   return (
     <Form {...form}>
-      <form className="space-y-8 max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
+      <form className="space-y-8 max-w-2xl mx-auto p-6 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-md">
         {currentStep === 1 && (
           <FormField
             control={form.control}

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import RecoilContextProvider from "@/lib/RecoilContextProvider";
 import { Toaster } from "react-hot-toast";
+import { ThemeProvider } from "@/components/custom/theme-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* ADD THIS LINK TAG */}
         <link
@@ -36,13 +37,21 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground transition-colors duration-200`}
       >
-        <RecoilContextProvider>
-          <Toaster position="bottom-right" />
-          {children}
-        </RecoilContextProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <RecoilContextProvider>
+            <Toaster position="bottom-right" />
+            {children}
+          </RecoilContextProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
 }
+

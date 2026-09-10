@@ -40,7 +40,16 @@ const HeroSection: React.FC = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center bg-white dark:bg-black overflow-hidden"
     >
-      <BackgroundLines className="w-full h-full flex flex-col items-center justify-center">
+      {/* Subtle Ambient Background Gradients / Grid with Radial Fade */}
+      <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center overflow-hidden">
+        {/* Soft Radial Ambient Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[650px] bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(99,102,241,0.1),transparent_70%)] dark:bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(99,102,241,0.18),transparent_70%)]" />
+
+        {/* Fading Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808014_1px,transparent_1px),linear-gradient(to_bottom,#80808014_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_20%,#000_30%,transparent_100%)]" />
+      </div>
+
+      <BackgroundLines className="w-full h-full flex flex-col items-center justify-center bg-transparent dark:bg-transparent">
         <div className="relative z-20 max-w-4xl mx-auto px-4 text-center">
           {/* Badge / Kicker */}
           <motion.div

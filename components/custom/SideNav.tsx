@@ -23,6 +23,7 @@ import { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { name: "Home", href: "/", icon: Home },
@@ -119,14 +120,17 @@ export default function SideNav() {
                 >
                   MRP.
                 </Link>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setIsOpen(false)}
-                  className="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
-                >
-                  <X className="h-5 w-5" />
-                </Button>
+                <div className="flex items-center gap-2">
+                  <ThemeToggle />
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setIsOpen(false)}
+                    className="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
+                  >
+                    <X className="h-5 w-5" />
+                  </Button>
+                </div>
               </div>
 
               <div className="flex-1 overflow-y-auto py-6 px-4 space-y-1">

@@ -66,8 +66,8 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
-      <h2 className="font-bold text-xl text-neutral-800 text-center dark:text-neutral-200">
+    <div className="max-w-md w-full mx-auto rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-xl bg-white dark:bg-zinc-900">
+      <h2 className="font-bold text-2xl text-zinc-900 text-center dark:text-zinc-100 tracking-tight">
         Login to your account
       </h2>
       <form
