@@ -3,6 +3,7 @@
 import { userAtom } from "@/atoms/user";
 import SideNav from "@/components/custom/SideNav";
 import ThemeToggle from "@/components/custom/ThemeToggle";
+import ProfileDropdown from "@/components/custom/ProfileDropdown";
 import { User } from "@/types/User";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
@@ -60,8 +61,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-screen flex-col bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-100 transition-colors duration-200">
       <SideNav />
 
-      <div className="fixed top-4 right-4 z-40">
+      <div className="fixed top-4 right-4 z-40 flex items-center gap-2.5">
         <ThemeToggle />
+        <ProfileDropdown align="right" />
       </div>
 
       <div className="flex-grow p-6 pt-20 lg:p-12 lg:pt-20 animate-in fade-in duration-500">

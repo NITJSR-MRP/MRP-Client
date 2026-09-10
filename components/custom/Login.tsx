@@ -116,10 +116,9 @@ export default function Login() {
           Log In &rarr;
           <BottomGradient />
         </button>
-        <div className="flex p-2 pt-4 flex-row justify-start text-sm">
-          <p className="text-gray-500 mr-1">Don&apos;t have an account yet?</p>
-          <Link href="/signup">Register</Link>
-        </div>
+        <p className="text-xs text-center text-zinc-500 dark:text-zinc-400 mt-6 pt-2 border-t border-zinc-100 dark:border-zinc-800/80">
+          Accounts are pre-registered for NIT Jamshedpur MCA students. Use your college email and roll number to log in.
+        </p>
       </form>
     </div>
   );

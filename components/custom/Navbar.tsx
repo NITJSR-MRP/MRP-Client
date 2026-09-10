@@ -9,6 +9,7 @@ import { useRecoilValue } from "recoil";
 import { userAtom } from "@/atoms/user";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ThemeToggle from "./ThemeToggle";
+import ProfileDropdown from "./ProfileDropdown";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,27 +77,9 @@ const Navbar: React.FC = () => {
             </ul>
             <div className="h-6 w-px bg-zinc-200 dark:bg-zinc-800" />{" "}
             <ThemeToggle />
-            {/* Logic: If User exists, show Profile, else show Login Button */}
+            {/* Logic: If User exists, show Profile Dropdown, else show Login Button */}
             {user ? (
-              <div
-                className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
-                onClick={() => router.push("/dashboard")}
-              >
-                <div className="text-right hidden lg:block">
-                  <p className="text-sm font-bold text-zinc-900 dark:text-zinc-100 leading-none">
-                    {user.name}
-                  </p>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                    {user.email}
-                  </p>
-                </div>
-                <Avatar className="h-9 w-9 border border-zinc-200 dark:border-zinc-700">
-                  <AvatarImage src="" /> {/* Add user.image if available */}
-                  <AvatarFallback className="bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-bold text-xs">
-                    {getInitials(user.name || "U")}
-                  </AvatarFallback>
-                </Avatar>
-              </div>
+              <ProfileDropdown align="right" />
             ) : (
               <Button
                 variant="default"
@@ -112,6 +95,7 @@ const Navbar: React.FC = () => {
           {/* Mobile Menu Toggle */}
           <div className="md:hidden flex items-center gap-2">
             <ThemeToggle />
+            {user && <ProfileDropdown align="right" />}
             <Button
               variant="ghost"
               size="icon"
@@ -175,26 +159,52 @@ const Navbar: React.FC = () => {
 
               <div className="mt-auto pt-6 border-t border-zinc-100 dark:border-zinc-800">
                 {user ? (
-                  <div
-                    className="flex items-center gap-3 p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900 cursor-pointer"
-                    onClick={() => {
-                      setIsOpen(false);
-                      router.push("/dashboard");
-                    }}
-                  >
-                    <Avatar className="h-10 w-10 border border-zinc-200 dark:border-zinc-700">
-                      <AvatarImage src="" />
-                      <AvatarFallback className="bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-bold">
-                        {getInitials(user.name || "U")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex flex-col overflow-hidden">
-                      <span className="font-bold text-zinc-900 dark:text-zinc-50 truncate">
-                        {user.name}
-                      </span>
-                      <span className="text-sm text-zinc-500 dark:text-zinc-400 truncate">
-                        {user.email}
-                      </span>
+                  <div className="space-y-3">
+                    <div
+                      className="flex items-center gap-3 p-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200/50 dark:border-zinc-800/50 cursor-pointer"
+                      onClick={() => {
+                        setIsOpen(false);
+                        router.push("/dashboard/profile");
+                      }}
+                    >
+                      <Avatar className="h-10 w-10 border border-zinc-200 dark:border-zinc-700">
+                        <AvatarImage src="" />
+                        <AvatarFallback className="bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-bold">
+                          {getInitials(user.name || "U")}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="flex flex-col overflow-hidden flex-1">
+                        <span className="font-bold text-zinc-900 dark:text-zinc-50 truncate text-sm">
+                          {user.name}
+                        </span>
+                        <span className="text-xs text-zinc-500 dark:text-zinc-400 truncate">
+                          {user.email}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full text-xs font-medium"
+                        onClick={() => {
+                          setIsOpen(false);
+                          router.push("/dashboard");
+                        }}
+                      >
+                        Dashboard
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full text-xs font-medium"
+                        onClick={() => {
+                          setIsOpen(false);
+                          router.push("/dashboard/profile");
+                        }}
+                      >
+                        View Profile
+                      </Button>
                     </div>
                   </div>
                 ) : (

@@ -9,6 +9,7 @@ import {
   Menu,
   PlusCircle,
   User,
+  UserCircle,
   Users,
   X,
   LayoutDashboard,
@@ -28,6 +29,7 @@ import ThemeToggle from "./ThemeToggle";
 const links = [
   { name: "Home", href: "/", icon: Home },
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { name: "My Profile", href: "/dashboard/profile", icon: UserCircle },
   { name: "All Interviews", href: "/dashboard/allInterviews", icon: Users },
   {
     name: "Companies Archive",
@@ -164,7 +166,11 @@ export default function SideNav() {
               </div>
 
               <div className="p-4 border-t border-zinc-100 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50">
-                <div className="flex items-center gap-3 mb-4 px-2">
+                <Link
+                  href="/dashboard/profile"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3 mb-4 px-2 py-1.5 rounded-xl hover:bg-zinc-200/60 dark:hover:bg-zinc-800/60 transition-colors group cursor-pointer"
+                >
                   <Avatar className="h-9 w-9 border border-zinc-200 dark:border-zinc-700">
                     <AvatarImage src="" />
                     <AvatarFallback className="bg-zinc-200 dark:bg-zinc-800 text-xs font-bold text-zinc-700 dark:text-zinc-300">
@@ -172,14 +178,14 @@ export default function SideNav() {
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex flex-col overflow-hidden">
-                    <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 truncate">
+                    <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {user?.name || "User"}
                     </span>
                     <span className="text-xs text-zinc-500 truncate">
                       {user?.email || "user@example.com"}
                     </span>
                   </div>
-                </div>
+                </Link>
 
                 <div className="w-full">
                   <Logout />
