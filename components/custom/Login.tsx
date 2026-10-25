@@ -7,7 +7,6 @@ import { User } from "@/types/User";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -105,20 +104,39 @@ export default function Login() {
             <p className="text-red-500">{errors.password.message}</p>
           )}
         </LabelInputContainer>
-        <div className="flex flex-row-reverse mr-2 pb-2 -mt-2 text-sm">
-          <Link href="/forgot">Forgot Password?</Link>
-        </div>
 
         <button
-          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] mt-2"
           type="submit"
         >
           Log In &rarr;
           <BottomGradient />
         </button>
-        <p className="text-xs text-center text-zinc-500 dark:text-zinc-400 mt-6 pt-2 border-t border-zinc-100 dark:border-zinc-800/80">
-          Accounts are pre-registered for NIT Jamshedpur MCA students. Use your college email and roll number to log in.
-        </p>
+
+        <div className="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800/80 space-y-2.5 text-center">
+          <p className="text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+            Pre-registered Accounts (Batches 2025 &amp; 2026)
+          </p>
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+            Your default password is your Roll Number in uppercase.
+          </p>
+          <div className="inline-block px-3.5 py-2 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200/70 dark:border-zinc-700/70 text-[11px] text-zinc-600 dark:text-zinc-300 font-mono text-left space-y-1">
+            <div className="text-[10px] font-sans font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-400">
+              Example Format:
+            </div>
+            <div>
+              <span className="text-zinc-400 font-sans">Example Email:</span>{" "}
+              <span className="font-semibold text-zinc-900 dark:text-zinc-100">2025pgcsca002@nitjsr.ac.in</span>
+            </div>
+            <div>
+              <span className="text-zinc-400 font-sans">Example Password:</span>{" "}
+              <span className="font-semibold text-indigo-600 dark:text-indigo-400">2025PGCSCA002</span>
+            </div>
+          </div>
+          <p className="text-[11px] text-zinc-400 dark:text-zinc-500">
+            Once logged in, you can change your password anytime from your profile dropdown.
+          </p>
+        </div>
       </form>
     </div>
   );
